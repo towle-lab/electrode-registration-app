@@ -4,6 +4,11 @@ electrode-registration-app
 a GUI application for registering ECoG electrodes onto pre-implant dura surface.
 
 
+screenshot
+----------
+![screenshot](https://raw.github.com/towle-lab/electrode-registration-app/master/screenshot.register+label.png)
+
+
 dependency
 ----------
 - [`VTK`](http://www.vtk.org/), on Ubuntu, you can install it via `apt`: `$ sudo apt-get install python-vtk`. 
