@@ -161,7 +161,8 @@ class ComponentItem(object):
             self.surface.actor.mapper.scalar_visibility = True            
             return 
 
-        #self.text.text = '%s %d' % self.id
+        if self.text and self.grid_id:
+            self.text.text = '    %s %d' % (self.grid_label, self.grid_id)
 
         color = ComponentItem.grid_color_lut[0]
         n_color = len(ComponentItem.grid_color_lut)
@@ -195,7 +196,8 @@ class ComponentItem(object):
     def grid_id(self, value):
         if value.strip().isdigit():
             self._grid_id = int(value)
-            #self.text.text = '%s %d' % self.id
+            if self.text and self.grid_label:
+                self.text.text = '      %s %d' % (self.grid_label, self.grid_id)
         else:
             self._grid_id = None
             #self.text.text = ''
@@ -899,6 +901,8 @@ class Application(object):
                     self.segment_model.endInsertRows()
                     self.register_model.build_index_maps()
                     self.set_view(*v)
+                    self.update_component_count()
+                    self.update_electrode_count()
 
             self.fig.on_mouse_pick(pick_manual_callback, type='cell', button='Right')
 
@@ -1136,8 +1140,10 @@ class Application(object):
         normal_filter = self.mlab.pipeline.poly_data_normals(transform_filter)
         normal_filter.filter.feature_angle = 80.
         surface = self.mlab.pipeline.surface(normal_filter)
-        #return SegmentComponent(name, voxel, transform, source, surface)
-        return ComponentItem(name, voxel, transform, source, surface)
+        component = ComponentItem(name, voxel, transform, source, surface)
+        x, y, z = component.centroid.flatten()
+        component.text = self.mlab.text3d(x, y, z, '', scale=2.)
+        return component
         
     
     def add_electrode(self, xyz, color=(0.3, 0.3, 0.3)):
@@ -1150,7 +1156,10 @@ class Application(object):
         # v[1, 1, 1] = 1.
         #return self.create_segment(v, m, 'added')
         # TODO new type of component with no voxel
-        return PointComponentItem('added %d' % self.register_model.rowCount(QtCore.QModelIndex()), xyz, s.parent.parent, s)
+        component = PointComponentItem('added %d' % self.register_model.rowCount(QtCore.QModelIndex()), xyz, s.parent.parent, s)
+        x, y, z = component.centroid.flatten()
+        component.text = self.mlab.text3d(x, y, z, '', scale=2.)
+        return component
 
 
     def register_electrode(self, component, to_position, color=(1., 1., 1.)):
@@ -1458,31 +1467,7 @@ class Application(object):
             f.write('numpoints %d\n' % n)
             f.write('useRealRAS 1')
         info('finish exporting %d electrodes to %s' % (len(electrodes), fn))
-
-
-    # def export_pial_distance(self, fn, only_selected=False):
-    #     # TODO 
-    #     info('exporting pial distance csv file')
-        
-    #     vs, fs, m = read_surface(fn)
-    #     vs = m.dot(vs.T)
-    #     kdtree = spatial.cKDTree(vs)
-
-    #     n_electrode = self.label_model.rowCount()
-    #     if only_selected:
-    #         electrodes = map(lambda i: self.segment_model.itemFromIndex(self.register_model.mapToSource(self.label_model.mapToSource(i))), filter(lambda x: x.column() == 0, self.label_selection_model.selectedIndexes()))
-    #     else:
-    #         electrodes = map(lambda i: self.segment_model.itemFromIndex(self.register_model.mapToSource(self.label_model.mapToSource(self.label_model.index(i, 0)))), xrange(n_electrode))
-
-    #     electrodes.sort(key=lambda x: x.channel_number)
-    #     headers = ['pial vertex'] + map(lambda x: 'channel=%d' % x.channel_number, electrodes)
-        
-    #     with open(fn, 'wb') as f:
-    #         csv.DictWriter(f, headers)
-    #         for electrode in electrodes:
-    #             electrode.channel_number
             
-
 
     def batch_assign_grid_label(self):
         info('assigning grid label %s to electrodes in batch' % self.ui.lineEdit_grid_label.text())
@@ -1507,7 +1492,7 @@ class Application(object):
             while len(o) > 0:
                 x = o.pop()
                 y = sm.itemFromIndex(x)
-                if isinstance(y, ComponentItem) and x.isValid():
+                if isinstance(y, ComponentItem) and not isinstance(y, PointComponentItem) and x.isValid():
                     components.append(y)
                 if sm.hasChildren(x):
                     for r in reversed(xrange(sm.rowCount(x))):

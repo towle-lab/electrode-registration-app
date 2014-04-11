@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'app/ui/mainwindow.ui'
 #
-# Created: Fri Mar 21 16:26:58 2014
+# Created: Fri Apr 11 15:27:36 2014
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -98,18 +98,6 @@ class Ui_MainWindow(object):
         self.frame_segment_config.setObjectName("frame_segment_config")
         self.verticalLayout_6 = QtGui.QVBoxLayout(self.frame_segment_config)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.radioButton_classifier = QtGui.QRadioButton(self.frame_segment_config)
-        self.radioButton_classifier.setEnabled(False)
-        self.radioButton_classifier.setObjectName("radioButton_classifier")
-        self.buttonGroup_segment_method = QtGui.QButtonGroup(MainWindow)
-        self.buttonGroup_segment_method.setObjectName("buttonGroup_segment_method")
-        self.buttonGroup_segment_method.addButton(self.radioButton_classifier)
-        self.verticalLayout_6.addWidget(self.radioButton_classifier)
-        self.radioButton_heuristics = QtGui.QRadioButton(self.frame_segment_config)
-        self.radioButton_heuristics.setChecked(True)
-        self.radioButton_heuristics.setObjectName("radioButton_heuristics")
-        self.buttonGroup_segment_method.addButton(self.radioButton_heuristics)
-        self.verticalLayout_6.addWidget(self.radioButton_heuristics)
         self.groupBox_heuristic_distance = QtGui.QGroupBox(self.frame_segment_config)
         self.groupBox_heuristic_distance.setObjectName("groupBox_heuristic_distance")
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.groupBox_heuristic_distance)
@@ -390,9 +378,9 @@ class Ui_MainWindow(object):
         self.actionHideThresholdingPreview.setObjectName("actionHideThresholdingPreview")
         self.actionExport_segmentation_dataset = QtGui.QAction(MainWindow)
         self.actionExport_segmentation_dataset.setObjectName("actionExport_segmentation_dataset")
-        self.actionShow_Electrode_ID_s = QtGui.QAction(MainWindow)
-        self.actionShow_Electrode_ID_s.setCheckable(True)
-        self.actionShow_Electrode_ID_s.setObjectName("actionShow_Electrode_ID_s")
+        self.actionShow_Electrode_ID = QtGui.QAction(MainWindow)
+        self.actionShow_Electrode_ID.setCheckable(True)
+        self.actionShow_Electrode_ID.setObjectName("actionShow_Electrode_ID")
         self.actionAbout_Qt = QtGui.QAction(MainWindow)
         self.actionAbout_Qt.setObjectName("actionAbout_Qt")
         self.actionReport_an_issue = QtGui.QAction(MainWindow)
@@ -417,7 +405,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionLicense)
         self.menuView.addAction(self.actionShowPial)
         self.menuView.addAction(self.actionHideThresholdingPreview)
-        self.menuView.addAction(self.actionShow_Electrode_ID_s)
+        self.menuView.addAction(self.actionShow_Electrode_ID)
         self.menuAdvanced.addAction(self.actionExport_segmentation_dataset)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuView.menuAction())
@@ -434,8 +422,6 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.pushButton_register_clear, QtCore.SIGNAL("clicked()"), self.listView_register.clearSelection)
         QtCore.QObject.connect(self.pushButton_label_clear, QtCore.SIGNAL("clicked()"), self.tableView_label.clearSelection)
         QtCore.QObject.connect(self.lineEdit_grid_label, QtCore.SIGNAL("returnPressed()"), self.pushButton_assign_grid_label.click)
-        QtCore.QObject.connect(self.radioButton_heuristics, QtCore.SIGNAL("toggled(bool)"), self.groupBox_heuristic_distance.setEnabled)
-        QtCore.QObject.connect(self.radioButton_heuristics, QtCore.SIGNAL("toggled(bool)"), self.groupBox_heuristic_size.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -449,8 +435,6 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Threshold", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_preview_threshold.setText(QtGui.QApplication.translate("MainWindow", "Preview Thresholding", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_hide_preview.setText(QtGui.QApplication.translate("MainWindow", "Hide Preview", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton_classifier.setText(QtGui.QApplication.translate("MainWindow", "segment with classifier", None, QtGui.QApplication.UnicodeUTF8))
-        self.radioButton_heuristics.setText(QtGui.QApplication.translate("MainWindow", "segment with heuristics", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_heuristic_distance.setToolTip(QtGui.QApplication.translate("MainWindow", "upper bound on a connected component\'s distance to dura", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_heuristic_distance.setTitle(QtGui.QApplication.translate("MainWindow", "Distance", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "mm", None, QtGui.QApplication.UnicodeUTF8))
@@ -515,7 +499,7 @@ class Ui_MainWindow(object):
         self.actionShowPial.setText(QtGui.QApplication.translate("MainWindow", "Show Pial", None, QtGui.QApplication.UnicodeUTF8))
         self.actionHideThresholdingPreview.setText(QtGui.QApplication.translate("MainWindow", "Hide Thresholding Preview", None, QtGui.QApplication.UnicodeUTF8))
         self.actionExport_segmentation_dataset.setText(QtGui.QApplication.translate("MainWindow", "Export Segmentation Dataset", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionShow_Electrode_ID_s.setText(QtGui.QApplication.translate("MainWindow", "Show Electrode ID\'s", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionShow_Electrode_ID.setText(QtGui.QApplication.translate("MainWindow", "Show Electrode ID", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout_Qt.setText(QtGui.QApplication.translate("MainWindow", "About Qt", None, QtGui.QApplication.UnicodeUTF8))
         self.actionReport_an_issue.setText(QtGui.QApplication.translate("MainWindow", "Report an Issue...", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDocumentation.setText(QtGui.QApplication.translate("MainWindow", "Documentation", None, QtGui.QApplication.UnicodeUTF8))

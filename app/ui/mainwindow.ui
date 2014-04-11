@@ -69,7 +69,7 @@ QMenuBar::item {
     </property>
     <addaction name="actionShowPial"/>
     <addaction name="actionHideThresholdingPreview"/>
-    <addaction name="actionShow_Electrode_ID_s"/>
+    <addaction name="actionShow_Electrode_ID"/>
    </widget>
    <widget class="QMenu" name="menuAdvanced">
     <property name="title">
@@ -207,32 +207,6 @@ QMenuBar::item {
             <enum>QFrame::Raised</enum>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QRadioButton" name="radioButton_classifier">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>segment with classifier</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">buttonGroup_segment_method</string>
-              </attribute>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="radioButton_heuristics">
-              <property name="text">
-               <string>segment with heuristics</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">buttonGroup_segment_method</string>
-              </attribute>
-             </widget>
-            </item>
             <item>
              <widget class="QGroupBox" name="groupBox_heuristic_distance">
               <property name="toolTip">
@@ -875,12 +849,12 @@ QMenuBar::item {
     <string>Export Segmentation Dataset</string>
    </property>
   </action>
-  <action name="actionShow_Electrode_ID_s">
+  <action name="actionShow_Electrode_ID">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show Electrode ID's</string>
+    <string>Show Electrode ID</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -1036,38 +1010,6 @@ QMenuBar::item {
     <hint type="destinationlabel">
      <x>236</x>
      <y>548</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radioButton_heuristics</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_heuristic_distance</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>333</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>383</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radioButton_heuristics</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_heuristic_size</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>333</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>454</y>
     </hint>
    </hints>
   </connection>

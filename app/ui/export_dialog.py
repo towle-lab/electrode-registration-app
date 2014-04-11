@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'app/ui/export_dialog.ui'
 #
-# Created: Fri Mar 21 16:26:54 2014
+# Created: Fri Apr 11 15:27:47 2014
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,40 +67,6 @@ class Ui_Dialog(object):
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_3.addItem(spacerItem1)
         self.tabWidget.addTab(self.tab, "")
-        self.tab_3 = QtGui.QWidget()
-        self.tab_3.setObjectName("tab_3")
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.tab_3)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.horizontalLayout_4 = QtGui.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.label_6 = QtGui.QLabel(self.tab_3)
-        self.label_6.setObjectName("label_6")
-        self.horizontalLayout_4.addWidget(self.label_6)
-        self.lineEdit_pial = QtGui.QLineEdit(self.tab_3)
-        self.lineEdit_pial.setObjectName("lineEdit_pial")
-        self.horizontalLayout_4.addWidget(self.lineEdit_pial)
-        self.pushButton_pial_browse = QtGui.QPushButton(self.tab_3)
-        self.pushButton_pial_browse.setObjectName("pushButton_pial_browse")
-        self.horizontalLayout_4.addWidget(self.pushButton_pial_browse)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_4)
-        self.horizontalLayout_3 = QtGui.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_3 = QtGui.QLabel(self.tab_3)
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_3.addWidget(self.label_3)
-        self.lineEdit_distance = QtGui.QLineEdit(self.tab_3)
-        self.lineEdit_distance.setObjectName("lineEdit_distance")
-        self.horizontalLayout_3.addWidget(self.lineEdit_distance)
-        self.pushButton_distance_browse = QtGui.QPushButton(self.tab_3)
-        self.pushButton_distance_browse.setObjectName("pushButton_distance_browse")
-        self.horizontalLayout_3.addWidget(self.pushButton_distance_browse)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_3)
-        self.pushButton_pial_export = QtGui.QPushButton(self.tab_3)
-        self.pushButton_pial_export.setObjectName("pushButton_pial_export")
-        self.verticalLayout_4.addWidget(self.pushButton_pial_export)
-        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem2)
-        self.tabWidget.addTab(self.tab_3, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.label_4 = QtGui.QLabel(Dialog)
         self.label_4.setObjectName("label_4")
@@ -122,11 +88,5 @@ class Ui_Dialog(object):
         self.pushButton_dat_browse.setText(QtGui.QApplication.translate("Dialog", "Browse...", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_dat_export.setText(QtGui.QApplication.translate("Dialog", "Export", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Freesurfer Pointset", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("Dialog", "Pial Path", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_pial_browse.setText(QtGui.QApplication.translate("Dialog", "Browse...", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Dialog", "Output Path", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_distance_browse.setText(QtGui.QApplication.translate("Dialog", "Browse...", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_pial_export.setText(QtGui.QApplication.translate("Dialog", "Export", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Pial Distance", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("Dialog", "Note: the output vertex indices starts from 0.", None, QtGui.QApplication.UnicodeUTF8))
 
