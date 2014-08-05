@@ -579,6 +579,7 @@ class Application(object):
 
         self.segment_selection_model = ui.treeView_edit.selectionModel()
         ui.pushButton_add.toggled.connect(self.manual_add)
+        ui.pushButton_import_point_set.clicked.connect(self.import_from_point_set)
         ui.pushButton_remove.clicked.connect(self.remove_segment)
         ui.pushButton_restore.clicked.connect(self.restore_segment)
         ui.pushButton_split.clicked.connect(self.split_component)
@@ -1074,6 +1075,33 @@ class Application(object):
             info('leave manual add mode')
 
 
+    @wrap_get_set_view
+    @QtCore.Slot()
+    def import_from_point_set(self):
+        fns, _ = QtGui.QFileDialog.getOpenFileNames(caption='Select one or more Freesurfer pointset files to import electrodes')
+        info('import electrodes from', fns)
+        n_points = 0
+        for fn in fns:
+            with open(fn) as f:
+                for l in f:
+                    if l[:4] == 'info':
+                        break
+                    xyz = map(float, l.split())
+                    new_component = self.add_electrode(xyz)
+                    n = self.segment_model.root_item.childCount()
+                    self.segment_model.beginInsertRows(QtCore.QModelIndex(), n, n+1)
+
+                    self.pickable_actors[repr(new_component.surface.actor.actor)] = new_component
+                    self.segment_model.root_item.appendChild(new_component)
+
+                    self.segment_model.endInsertRows()
+                    self.register_model.build_index_maps()
+                    n_points += 1
+        self.update_component_count()
+        self.update_electrode_count()
+        info('imported %d electrodes' % n_points)
+
+
     def split_voxel(self, voxel, n_piece):
         #import pdb; pdb.set_trace()
         d = self.ct.getVoxDims()
@@ -1084,6 +1112,7 @@ class Application(object):
         debug('k means ended with inertia %f' % inertia)
         #return map(lambda i: ijk[np.argwhere(label == i)], xrange(n_piece))
         return ijk, label
+
 
     @wrap_get_set_view
     def split_component(self):

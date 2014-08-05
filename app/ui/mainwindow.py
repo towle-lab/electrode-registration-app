@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'app/ui/mainwindow.ui'
 #
-# Created: Fri Apr 11 15:27:36 2014
+# Created: Tue Aug  5 17:31:33 2014
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -203,6 +203,9 @@ class Ui_MainWindow(object):
         self.pushButton_add.setCheckable(True)
         self.pushButton_add.setObjectName("pushButton_add")
         self.verticalLayout_2.addWidget(self.pushButton_add)
+        self.pushButton_import_point_set = QtGui.QPushButton(self.tab_edit)
+        self.pushButton_import_point_set.setObjectName("pushButton_import_point_set")
+        self.verticalLayout_2.addWidget(self.pushButton_import_point_set)
         self.horizontalLayout_10 = QtGui.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.pushButton_remove = QtGui.QPushButton(self.tab_edit)
@@ -449,6 +452,8 @@ class Ui_MainWindow(object):
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Components", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_add.setText(QtGui.QApplication.translate("MainWindow", "&Add", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_add.setShortcut(QtGui.QApplication.translate("MainWindow", "A", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_import_point_set.setText(QtGui.QApplication.translate("MainWindow", "&Import from Point Set...", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_import_point_set.setShortcut(QtGui.QApplication.translate("MainWindow", "I", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_remove.setText(QtGui.QApplication.translate("MainWindow", "Remove", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_remove.setShortcut(QtGui.QApplication.translate("MainWindow", "Del", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_restore.setText(QtGui.QApplication.translate("MainWindow", "Restore", None, QtGui.QApplication.UnicodeUTF8))

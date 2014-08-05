@@ -435,6 +435,16 @@ QMenuBar::item {
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="pushButton_import_point_set">
+           <property name="text">
+            <string>&amp;Import from Point Set...</string>
+           </property>
+           <property name="shortcut">
+            <string>I</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
             <widget class="QPushButton" name="pushButton_remove">
@@ -586,16 +596,6 @@ QMenuBar::item {
            </property>
            <property name="shortcut">
             <string>C</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_export">
-           <property name="text">
-            <string>&amp;Export...</string>
-           </property>
-           <property name="shortcut">
-            <string>E</string>
            </property>
           </widget>
          </item>
@@ -783,6 +783,23 @@ QMenuBar::item {
            </property>
            <property name="shortcut">
             <string>C</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_export">
+           <property name="text">
+            <string>&amp;Export...</string>
+           </property>
+           <property name="shortcut">
+            <string>E</string>
            </property>
           </widget>
          </item>
@@ -1014,7 +1031,4 @@ QMenuBar::item {
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup_segment_method"/>
- </buttongroups>
 </ui>
